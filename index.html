@@ -26,11 +26,12 @@
                     </div>
                 </div>
 
-                <div class="thumbs">
+                <div class="thumbs" >
                     <div class="prev" @click="prevButton"></div>
                     <div class="next"  @click="nextButton"></div>
-                    <div class="thumb" v-for="(slide, index) in slides " :class="activeImgSlide === index ? 'active': ''">
-                        <img :src="slides.image" />    
+                    <!-- operatore ternario -->
+                    <div v-for="(slide, index) in slides " class="thumb" :class="activeImgSlide === index ? 'active': ''" @click="selectImage(index)">
+                        <img :src="slide.image" />    
                     </div>
                 </div>
 

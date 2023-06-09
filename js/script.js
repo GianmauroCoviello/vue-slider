@@ -1,10 +1,12 @@
-
+// boilerplate vuejs
 const {createApp} = Vue
 
 createApp({
     data(){
         return{
             activeImgSlide : 0,
+            autoPlaySlide : null,
+            // array obj
             slides:  [
                 {
                     image: 'img/01.webp',
@@ -37,33 +39,53 @@ createApp({
         }
         
     },
+    // created(){
+    //     this.autoPlaySlides()
+    // },
     methods:{
+        
+        nextButton(){
+            this.activeImgSlide++
+
+            if (this.activeImgSlide > this.slides.lenght -1) {
+
+                this.activeImgSlide = 0
+                
+            }
+
+        },
 
         prevButton(){
             this.activeImgSlide--
 
             if (this.activeImgSlide < 0) {
 
-                activeImgSlide = this.slides.lenght -1
+                this.activeImgSlide = this.slides.lenght -1
                 
             }
             
         },
-        nextButton(){
-            this.activeImgSlide++
-
-            if (this.activeImgSlide > this.slides.lenght -1) {
-
-                activeImgSlide = 0
-                
-            }
-
-        },
+    
         selectImage(index){
-            console.log(index)
-        }
 
-    }
+            this.activeImgSlide = index
+            console.log(index)
+        },
+        // autoPlaySlides(){
+
+        //     this.autoPlaySlide = setInterval(() => {
+
+        //         this.nextButton()
+                
+
+        //     },2000)
+
+        // }
+
+
+    },
+
+    
    
 }).mount('#app')
 
